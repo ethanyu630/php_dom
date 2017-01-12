@@ -6,8 +6,7 @@
 	$dbh = new PDO($dsn,"root","");
 	$dbh->query("SET NAMES UTF8");
 	function insert($dbh,$sql){
-		$resulte = $dbh->query($sql);  //execute	
-	     
+		$resulte = $dbh->query($sql);  	     
 	}
 	
 	require_once("simple_html_dom.php");  

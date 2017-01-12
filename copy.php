@@ -81,7 +81,7 @@ $queryString_Recordset1 = sprintf("&totalRows_Recordset1=%d%s", $totalRows_Recor
 	text-align: center;
 }
 .pppp {
-	font-size: 24px;
+	font-size: 10px;
 	font-weight: bold;
 	text-align: center;
 }
@@ -106,7 +106,7 @@ $queryString_Recordset1 = sprintf("&totalRows_Recordset1=%d%s", $totalRows_Recor
   <?php }else{ echo "蘋果就是跩，不給圖片";} // Show if recordset not empty ?></td>
     </tr>
         <tr>
-      <td colspan="2" class="pppp">蘋果咬一口</td>
+      <td colspan="2" class="pppp">相關網址:<?php echo $row_Recordset1['href']; ?></td>
       
     </tr>
     
