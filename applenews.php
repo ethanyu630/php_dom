@@ -22,9 +22,10 @@
 		if($tmp){
 			$title=$tmp->plaintext;			
 		}
-		$href=$val->find('a', 0)->href;
+		$href1=$val->find('a', 0)->href;
 		//echo $href;
-		$htm= file_get_contents("http://www.appledaily.com.tw"."$href");		
+		$href="http://www.appledaily.com.tw"."$href1";
+		$htm= file_get_contents($href);		
 		$htm = str_get_html($htm);
 		$content=$htm->find('#summary',0)->plaintext;
 		//echo $content;
@@ -35,6 +36,7 @@
 			$data=file_get_contents("$picture");
 			$path='C:\xampp\htdocs\php_simple\img\\'.$img.'.jpg';
 			$data=file_put_contents($path,$data);
+			$picture=$img.".jpg";
 		}else{
 			$picture="無";
 		}
@@ -42,6 +44,9 @@
 		$resulte=insert($dbh,$sql);
 		$img++;
 	}
+	
+	
+?>
 
 	
 
