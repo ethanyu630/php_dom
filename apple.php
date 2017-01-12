@@ -28,12 +28,14 @@ require_once("simple_html_dom.php");
 $html=file_get_contents("http://www.appledaily.com.tw/realtimenews/section/new/");
 
 $html = str_get_html($html);
-
+	/*將資料寫入資料庫
 $list=$html->find('.rlby',0)->find("ul",0)->find("li");
 $result=[];
 $link=connect();
 foreach($list as $val){
 	$tmp=$val->find('h1', 0);
+	
+
 	if($tmp){
 		$title=$tmp->plaintext;
 	}
@@ -44,13 +46,18 @@ foreach($list as $val){
     $sql="INSERT INTO `simpledom`(`id`, `title`, `href`, `content`) VALUES ('','$title','$href','$content')";
 	$resulte=execute_sql($link,"dom",$sql);
 	$result[]=compact(["title","href","content"]);
-}
+	}
+	 var_dump($result);
+
+	*/
+	$result = $html->find('img');
+    foreach($result as $v) {echo $v->src . '<br>';} 
 
 
 
 
 
- var_dump($result);
+
 
 
 
