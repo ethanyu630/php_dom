@@ -1,5 +1,4 @@
 <?php require_once('Connections/apple.php'); ?>
-<?php require_once('Connections/apple.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -32,6 +31,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+
 $currentPage = $_SERVER["PHP_SELF"];
 
 $maxRows_Recordset1 = 5;
@@ -54,6 +54,7 @@ if (isset($_GET['totalRows_Recordset1'])) {
   $totalRows_Recordset1 = mysql_num_rows($all_Recordset1);
 }
 $totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
+
 
 $queryString_Recordset1 = "";
 if (!empty($_SERVER['QUERY_STRING'])) {

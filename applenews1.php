@@ -7,7 +7,7 @@
 	$dbh->query("SET NAMES UTF8");
 	function select($dbh,$sql){
 		$query = $dbh->query($sql);
-		// $query->setFetchMode(PDO::FETCH_ASSOC);
+		$query->setFetchMode(PDO::FETCH_ASSOC);
 		$select=$query->fetchAll();
 		if(isset($select)){
 			return $select;
@@ -24,13 +24,7 @@
 	$html=file_get_contents("http://www.appledaily.com.tw/realtimenews/section/animal/");
 	$html = str_get_html($html);
 	$list=$html->find('.rlby',0)->find("ul",0)->find("li");
-	$sql="SELECT `check` FROM `simpledom` WHERE `check`";
-	$select=select($dbh,$sql);
-	for($i=0;$i<count($select);$i++){
-		$check1[]=$select[$i]["check"];	
-	}
-	
-	
+
 	foreach($list as $val){
 		
 		$tmp=$val->find('h1', 0);  //在從li開始抓取
@@ -42,14 +36,9 @@
 		$htm= file_get_contents($href);		
 		$htm = str_get_html($htm);
 		$check =explode("/",$href,-1);
-		 // print_r($select);
-		
-		 // exit;
-		if(in_array($check[7],$check1)){
-			
-			
-		}else{
-		
+		$sql="SELECT `check` FROM `simpledom` WHERE check='$check'";
+		$select=select($dbh,$sql);
+		if(isset($select)){
 			$content=$htm->find('#summary',0)->plaintext;   //存文字抓取
 			
 			$pic=$htm->find('.imgmid2',0);
